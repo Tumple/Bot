@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using DotNetEnv;
+using Microsoft.Extensions.Logging;
 
 
 
@@ -16,6 +17,8 @@ internal class Program
 	private static readonly string OpenAIUrl = "https://api.openai.com/v1/chat/completions";
 
 	private static string modelAPI = "gpt-3.5-turbo";
+
+	public static readonly ILogger logger = LoggerFactory.Create(builder=>builder.AddConsole()).CreateLogger<Program>();
 
     private static Dictionary<string, List<dynamic>> userHistories = new Dictionary<string, List<dynamic>>();
 	private static async Task Main(string[] args)
@@ -29,20 +32,16 @@ internal class Program
         var me = await bot.GetMeAsync();
 		bot.OnMessage += OnMessage;
 
-		Console.ForegroundColor = ConsoleColor.DarkGreen;
-		Console.WriteLine($"@{me.Username} начал работу в {DateTime.Now}\n");
+		logger.LogInformation($"@{me.Username} начал работу в {DateTime.Now}\n");
 
-        Console.ResetColor();
-		Console.ReadLine();
+		await Task.Delay(-1);
 		cts.Cancel();
 
         async Task OnMessage(Message msg, UpdateType type)
 		{
 			if (msg.Text == null) return;
 
-			Console.ForegroundColor = ConsoleColor.DarkCyan;
-			Console.WriteLine($"({msg.Chat.Id}) @{msg.Chat.Username}\nСообщение '{msg.Text}'\n{DateTime.Now}\n");
-			Console.ResetColor();
+			logger.LogInformation($"({msg.Chat.Id}) @{msg.Chat.Username}\nСообщение '{msg.Text}'\n{DateTime.Now}\n");
 
 			switch (msg.Text)
 			{
@@ -123,7 +122,7 @@ internal class Program
 			catch (Exception ex)
 			{
 
-				Console.WriteLine($"Ошибка при запросе к OpenAI API: {ex.Message}");
+				logger.LogError($"Ошибка при запросе к OpenAI API: {ex.Message}");
 				await bot.SendTextMessageAsync(
 					chatId: msg.Chat.Id, 
 					text: "⚠️ Упс! Что-то пошло не так.\r\n\r\nПроизошла ошибка при обработке вашего запроса. Возможно, это временная проблема.\r\n\r\nЕсли ошибка повторяется, обратитесь к разработчику. 🙏\r\n@tumples\r\nИзвините за неудобства! 😊"
@@ -285,7 +284,7 @@ internal class Program
 		bot.OnMessage += OnMessage;
 
 		Console.ForegroundColor = ConsoleColor.DarkGreen;
-		Console.WriteLine($"@{me.Username} начал работу в {DateTime.Now}\n");
+		logger.LogInformation($"@{me.Username} начал работу в {DateTime.Now}\n");
 		Console.ResetColor();
 		Console.ReadLine();
 		cts.Cancel();
@@ -293,7 +292,7 @@ internal class Program
 		async Task OnMessage(Message msg, UpdateType type)
 		{
 			Console.ForegroundColor = ConsoleColor.DarkCyan;
-			Console.WriteLine($"({msg.Chat.Id}) @{msg.Chat.Username}\nСообщение '{msg.Text}'\n{DateTime.Now}\n");
+			logger.LogInformation($"({msg.Chat.Id}) @{msg.Chat.Username}\nСообщение '{msg.Text}'\n{DateTime.Now}\n");
 			Console.ResetColor();
 
 			// Отправка сообщения в Mistral AI и получение ответа
