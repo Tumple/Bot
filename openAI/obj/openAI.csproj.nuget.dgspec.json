@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cukw\\source\\repos\\Bot\\openAI\\openAI.csproj": {}
+    "C:\\Users\\Tumple\\source\\repos\\AI\\openAItumple\\openAI\\openAI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cukw\\source\\repos\\Bot\\openAI\\openAI.csproj": {
+    "C:\\Users\\Tumple\\source\\repos\\AI\\openAItumple\\openAI\\openAI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cukw\\source\\repos\\Bot\\openAI\\openAI.csproj",
+        "projectUniqueName": "C:\\Users\\Tumple\\source\\repos\\AI\\openAItumple\\openAI\\openAI.csproj",
         "projectName": "openAI",
-        "projectPath": "C:\\Users\\cukw\\source\\repos\\Bot\\openAI\\openAI.csproj",
-        "packagesPath": "C:\\Users\\cukw\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cukw\\source\\repos\\Bot\\openAI\\obj\\",
+        "projectPath": "C:\\Users\\Tumple\\source\\repos\\AI\\openAItumple\\openAI\\openAI.csproj",
+        "packagesPath": "C:\\Users\\Tumple\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Tumple\\source\\repos\\AI\\openAItumple\\openAI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\cukw\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Tumple\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
